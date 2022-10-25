@@ -1,13 +1,32 @@
 import React from 'react';
+import { useContext } from 'react';
+import { Link } from 'react-router-dom';
+import { AuthContext } from '../../contexts/UserContext';
+import './Login.css'
 
 const Login = () => {
 
+    const { signIn } = useContext(AuthContext);
+
     const handelSubmit = event => {
         event.preventDefault();
+
         const form = event.target;
         const email = form.email.value;
         const password = form.password.value;
         console.log(email, password);
+
+
+        signIn(email, password)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+                form.reset();
+            })
+            .catch(error => {
+                console.error('error', error);
+
+            })
     }
 
     return (
@@ -37,6 +56,43 @@ const Login = () => {
                             <button className="btn btn-primary">Login</button>
                         </div>
                     </form>
+                </div>
+                <p className='text-center'>-------------Or-------------</p>
+                <div>
+                    <Link>
+                        <div className='flex justify-content-center align-items-center mt-3'>
+                            <div className='flex justify-between items-center login-container'>
+                                <div className='w-10 h-10 ml-1'>
+                                    <img
+                                        src='https://i.ibb.co/7yz77Hj/google.png' alt=''
+                                    ></img>
+                                </div>
+                                <div className='text-black font-semibold'>
+                                    Continue with Google
+                                </div>
+                                <div className='mr-6'>
+
+                                </div>
+                            </div>
+                        </div>
+                    </Link>
+                    <Link>
+                        <div className='flex justify-content-center align-items-center mt-3'>
+                            <div className='flex justify-between items-center login-container'>
+                                <div className='w-10 h-10 ml-1'>
+                                    <img
+                                        src='https://i.ibb.co/Z62F8M5/github-512.png' alt=''
+                                    ></img>
+                                </div>
+                                <div className='text-black font-semibold'>
+                                    Continue with GitHub
+                                </div>
+                                <div className='mr-6'>
+
+                                </div>
+                            </div>
+                        </div>
+                    </Link>
                 </div>
             </div>
         </div>

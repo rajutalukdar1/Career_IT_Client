@@ -17,10 +17,12 @@ const Register = () => {
         const password = form.password.value;
         console.log(email, password, name, photoURL);
 
+
         createUser(email, password)
             .then(result => {
                 const user = result.user;
                 console.log(user);
+                form.reset();
             })
             .catch(error => {
                 console.error('error', error);
@@ -66,6 +68,43 @@ const Register = () => {
                             <button className="btn btn-primary">Register</button>
                         </div>
                     </form>
+                </div>
+                <p className='text-center'>-------------Or-------------</p>
+                <div>
+                    <Link>
+                        <div className='flex justify-content-center align-items-center mt-3'>
+                            <div className='flex justify-between items-center login-container'>
+                                <div className='w-10 h-10 ml-1'>
+                                    <img
+                                        src='https://i.ibb.co/7yz77Hj/google.png' alt=''
+                                    ></img>
+                                </div>
+                                <div className='text-black font-semibold'>
+                                    Continue with Google
+                                </div>
+                                <div className='mr-6'>
+
+                                </div>
+                            </div>
+                        </div>
+                    </Link>
+                    <Link>
+                        <div className='flex justify-content-center align-items-center mt-3'>
+                            <div className='flex justify-between items-center login-container'>
+                                <div className='w-10 h-10 ml-1'>
+                                    <img
+                                        src='https://i.ibb.co/Z62F8M5/github-512.png' alt=''
+                                    ></img>
+                                </div>
+                                <div className='text-black font-semibold'>
+                                    Continue with GitHub
+                                </div>
+                                <div className='mr-6'>
+
+                                </div>
+                            </div>
+                        </div>
+                    </Link>
                 </div>
             </div>
         </div>
