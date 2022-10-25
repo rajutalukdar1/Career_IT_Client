@@ -5,7 +5,7 @@ import { AuthContext } from '../../contexts/UserContext';
 
 const Register = () => {
 
-    const { createUser } = useContext(AuthContext);
+    const { createUser, signInWithGoogle } = useContext(AuthContext);
 
     const handelSubmit = event => {
         event.preventDefault();
@@ -23,6 +23,17 @@ const Register = () => {
                 const user = result.user;
                 console.log(user);
                 form.reset();
+            })
+            .catch(error => {
+                console.error('error', error);
+            })
+    }
+
+    const handleGoogleSignIn = () => {
+        signInWithGoogle()
+            .then(result => {
+                const user = result.user;
+                console.log(user);
             })
             .catch(error => {
                 console.error('error', error);
@@ -71,7 +82,7 @@ const Register = () => {
                 </div>
                 <p className='text-center'>-------------Or-------------</p>
                 <div>
-                    <Link>
+                    <Link onClick={handleGoogleSignIn}>
                         <div className='flex justify-content-center align-items-center mt-3'>
                             <div className='flex justify-between items-center login-container'>
                                 <div className='w-10 h-10 ml-1'>
