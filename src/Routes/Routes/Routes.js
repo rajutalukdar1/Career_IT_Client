@@ -8,6 +8,7 @@ import Home from "../../components/Home/Home";
 import Login from "../../components/Login/Login";
 import Register from "../../components/Register/Register";
 import Main from "../../layout/Main";
+import PrivateRoute from "../PrivetRoute/PrivateRoute";
 
 export const routes = createBrowserRouter([
     {
@@ -25,7 +26,7 @@ export const routes = createBrowserRouter([
             },
             {
                 path: '/course',
-                element: <Course></Course>,
+                element: <PrivateRoute><Course></Course></PrivateRoute>,
                 loader: () => fetch('http://localhost:5000/course-categories')
             },
             {

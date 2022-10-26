@@ -1,7 +1,8 @@
 .course-categories-container {
+    margin-top: 10px;
     width: 370px;
     height: 500px;
     border-radius: 20px;
-    background-color: lightgray;
+    background-color: whitesmoke;
     box-shadow: 5px 5px 5px gray;
 }

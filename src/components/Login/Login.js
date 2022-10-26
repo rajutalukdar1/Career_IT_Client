@@ -1,13 +1,17 @@
 import React from 'react';
 import { useState } from 'react';
 import { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/UserContext';
 import './Login.css'
 
 const Login = () => {
     const [error, setError] = useState('')
     const { signIn, signInWithGoogle, signInWithGithub } = useContext(AuthContext);
+    const navigate = useNavigate();
+    const location = useLocation();
+
+    const from = location.state?.from?.pathname || '/';
 
     const handelSubmit = event => {
         event.preventDefault();
@@ -23,8 +27,9 @@ const Login = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user);
-                setError('');
                 form.reset();
+                setError('');
+                navigate(from, { replace: true });
 
             })
             .catch(error => {
