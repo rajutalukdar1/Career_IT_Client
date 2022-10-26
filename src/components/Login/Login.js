@@ -6,7 +6,7 @@ import './Login.css'
 
 const Login = () => {
 
-    const { signIn } = useContext(AuthContext);
+    const { signIn, signInWithGoogle } = useContext(AuthContext);
 
     const handelSubmit = event => {
         event.preventDefault();
@@ -29,11 +29,22 @@ const Login = () => {
             })
     }
 
+    const handleGoogleSignIn = () => {
+        signInWithGoogle()
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+            })
+            .catch(error => {
+                console.error('error', error);
+            })
+    }
+
     return (
         <div className="hero min-h-screen bg-base-200">
             <div className="hero-content flex-col">
                 <div className="text-center lg:text-left">
-                    <h1 className="text-5xl font-bold">Please Login now!!!!</h1>
+                    <h1 className="text-5xl font-bold">Login now!!</h1>
                 </div>
                 <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
                     <form onSubmit={handelSubmit} className="card-body">
@@ -49,7 +60,7 @@ const Login = () => {
                             </label>
                             <input type="password" name='password' placeholder="password" className="input input-bordered" required />
                             <label className="label">
-                                <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
+                                <Link to="" className="label-text-alt link link-hover">Forgot password?</Link>
                             </label>
                         </div>
                         <div className="form-control mt-6">
@@ -59,7 +70,7 @@ const Login = () => {
                 </div>
                 <p className='text-center'>-------------Or-------------</p>
                 <div>
-                    <Link>
+                    <Link onClick={handleGoogleSignIn}>
                         <div className='flex justify-content-center align-items-center mt-3'>
                             <div className='flex justify-between items-center login-container'>
                                 <div className='w-10 h-10 ml-1'>

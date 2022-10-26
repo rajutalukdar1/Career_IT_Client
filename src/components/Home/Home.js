@@ -1,12 +1,20 @@
 import React from 'react';
-import { useContext } from 'react';
-import { AuthContext } from '../../contexts/UserContext';
+import { Link } from 'react-router-dom';
+import './Home.css'
 
 const Home = () => {
-    const { user } = useContext(AuthContext);
+
     return (
-        <div>
-            <h2> this is home compo {user?.displayName}</h2>
+        <div className='home'>
+            <div className='text-container'>
+                <h3>Welcome To Career It</h3>
+                <h2>Let's Started </h2>
+                <h2>Learning Skills & Upgrade Your Life</h2>
+                <div>
+                    <Link className="btn btn-active btn-secondary">GET STARTED</Link>
+                    <Link to='/course' className="btn btn-outline btn-primary">OUR COURSES</Link>
+                </div>
+            </div>
         </div>
     );
 };

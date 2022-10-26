@@ -2,6 +2,7 @@ import React from 'react';
 import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../contexts/UserContext';
+import './Header.css'
 
 const Header = () => {
     const { user, logOut } = useContext(AuthContext);
@@ -14,7 +15,7 @@ const Header = () => {
     }
 
     return (
-        <div className="navbar bg-gray-200">
+        <div className="navbar header-container">
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -23,6 +24,7 @@ const Header = () => {
                     <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
                         <li><Link to='/home'>Home</Link></li>
                         <li><Link to='/course'>Course</Link></li>
+                        <li><Link to='/faq'>FAQ</Link></li>
                         <li><Link to='/blog'>Blog</Link></li>
                         <li>{
                             user?.email ?
@@ -40,10 +42,15 @@ const Header = () => {
                 <ul className="menu menu-horizontal p-0 font-bold">
                     <li><Link to='/home'>Home</Link></li>
                     <li><Link to='/course'>Course</Link></li>
+                    <li><Link to='/faq'>FAQ</Link></li>
                     <li><Link to='blog'>Blog</Link></li>
+                </ul>
+            </div>
+            <div className="navbar-end hidden lg:flex">
+                <ul className="menu menu-horizontal p-0 font-bold">
                     <li>{
                         user?.email ?
-                            <button onClick={handelLogout} className='btn btn-sm'>Log Out</button>
+                            <Link onClick={handelLogout} className=''>Log Out</Link>
                             : <div className='mr-4 font-bold'>
                                 <Link to='/login'>Login</Link>
                             </div>
