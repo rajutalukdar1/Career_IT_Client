@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../contexts/UserContext';
 
 const Register = () => {
 
+    const [error, setError] = useState('')
     const { createUser, signInWithGoogle, signInWithGithub } = useContext(AuthContext);
 
     const handelSubmit = event => {
@@ -22,10 +23,12 @@ const Register = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user);
+                setError('');
                 form.reset();
             })
             .catch(error => {
-                console.error('error', error);
+                console.error(error);
+                setError(error.message)
             })
     }
 
@@ -89,6 +92,7 @@ const Register = () => {
                         <div className="form-control mt-6">
                             <button className="btn btn-primary">Register</button>
                         </div>
+                        <p className='text-red-600'>{error}</p>
                     </form>
                 </div>
                 <p className='text-center'>-------------Or-------------</p>

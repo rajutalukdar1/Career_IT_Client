@@ -1,15 +1,17 @@
 import React from 'react';
+import { useState } from 'react';
 import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../contexts/UserContext';
 import './Login.css'
 
 const Login = () => {
-
+    const [error, setError] = useState('')
     const { signIn, signInWithGoogle, signInWithGithub } = useContext(AuthContext);
 
     const handelSubmit = event => {
         event.preventDefault();
+
 
         const form = event.target;
         const email = form.email.value;
@@ -21,11 +23,13 @@ const Login = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user);
+                setError('');
                 form.reset();
+
             })
             .catch(error => {
-                console.error('error', error);
-
+                console.error(error);
+                setError(error.message)
             })
     }
 
@@ -37,7 +41,7 @@ const Login = () => {
                 console.log(user);
             })
             .catch(error => {
-                console.error('error', error);
+                console.error(error);
             })
     }
 
@@ -48,7 +52,7 @@ const Login = () => {
                 console.log(user)
             })
             .catch(error => {
-                console.error('error', error);
+                console.error(error);
             })
     }
 
@@ -78,6 +82,8 @@ const Login = () => {
                         <div className="form-control mt-6">
                             <button className="btn btn-primary">Login</button>
                         </div>
+                        <small><p>Don't have a accounts?<Link to='/register'>Register now</Link></p></small>
+                        <p className='text-red-600'>{error}</p>
                     </form>
                 </div>
                 <p className='text-center'>-------------Or-------------</p>

@@ -11,7 +11,7 @@ const auth = getAuth(app);
 
 const UserContext = ({ children }) => {
 
-    const [user, setUser] = useState({ displayName: 'bangladesh' });
+    const [user, setUser] = useState({ displayName: 'ban' });
 
     const googleProvider = new GoogleAuthProvider();
     const githubProvider = new GithubAuthProvider();
