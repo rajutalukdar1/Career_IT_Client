@@ -5,7 +5,7 @@ import { AuthContext } from '../../contexts/UserContext';
 
 const Register = () => {
 
-    const { createUser, signInWithGoogle } = useContext(AuthContext);
+    const { createUser, signInWithGoogle, signInWithGithub } = useContext(AuthContext);
 
     const handelSubmit = event => {
         event.preventDefault();
@@ -34,6 +34,17 @@ const Register = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user);
+            })
+            .catch(error => {
+                console.error('error', error);
+            })
+    }
+
+    const handleGithubSignIn = () => {
+        signInWithGithub()
+            .then(result => {
+                const user = result.user;
+                console.log(user)
             })
             .catch(error => {
                 console.error('error', error);
@@ -99,7 +110,7 @@ const Register = () => {
                             </div>
                         </div>
                     </Link>
-                    <Link>
+                    <Link onClick={handleGithubSignIn}>
                         <div className='flex justify-content-center align-items-center mt-3'>
                             <div className='flex justify-between items-center login-container'>
                                 <div className='w-10 h-10 ml-1'>
