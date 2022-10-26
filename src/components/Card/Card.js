@@ -14,7 +14,7 @@ const Card = ({ course }) => {
                 <h2 className="card-title">{name}</h2>
                 <p>If a dog chews shoes whose shoes does he choose?</p>
                 <div className="card-actions">
-                    <button className="btn btn-primary"><Link to={`/courseDetails/${course.id}`}>Details</Link></button>
+                    <Link className="btn btn-primary" to={`/courseDetails/${course.id}`}>Details</Link>
                 </div>
             </div>
         </div>
