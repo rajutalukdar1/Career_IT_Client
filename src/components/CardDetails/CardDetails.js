@@ -13,8 +13,7 @@ const CardDetails = () => {
                 <p>{details}</p>
                 <div className="card-actions justify-end">
                     <Link className="btn btn-primary" to='/course'>Back to Course</Link>
-                    <button className="btn btn-primary">Enroll Now</button>
-                    <Link className="btn btn-primary" to='/'>Pay Now 5.5k</Link>
+                    <Link className="btn btn-primary" to='/enroll'>Enroll Now</Link>
                 </div>
             </div>
         </div>
