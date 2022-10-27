@@ -12,17 +12,17 @@ const Course = () => {
                 {
                     courses.map(course => <p
                         className='text-4xl font-bold mt-6'
-                        key={course.id}
+                        key={course?.id}
                     >
-                        <Link to={`/courseDetails/${course.id}`}>{course.name}</Link>
+                        <Link to={`/courseDetails/${course?.id}`}>{course?.name}</Link>
                     </p>)
                 }
             </div>
             <div className='lg:col-span-3 sm:col-span-1 '>
                 <div className='grid lg:grid-cols-2 lg:gap-x-3 sm:gap-x-1 lg:gap-y-12 sm:gap-y-1'>
                     {
-                        courses.map(course => <Card course={course}
-                            key={course.id}
+                        courses?.map(course => <Card course={course}
+                            key={course?.id}
                         ></Card>)
                     }
                 </div>
