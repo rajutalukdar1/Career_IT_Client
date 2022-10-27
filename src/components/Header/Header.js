@@ -2,11 +2,13 @@ import React from 'react';
 import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../contexts/UserContext';
+import { FaUser } from 'react-icons/fa';
 import './Header.css'
 
 const Header = () => {
     const { user, logOut } = useContext(AuthContext);
     console.log('context', user);
+    // console.log(user.displayName);
 
     const handelLogout = () => {
         logOut()
@@ -23,23 +25,27 @@ const Header = () => {
                     </label>
 
                     <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 font-bold">
-                        <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-                            <div className="w-10 rounded-full">
-                                <img src="https://placeimg.com/80/80/people" />
-                            </div>
-                        </label>
+                        <div className='avatar'>
+                            {
+                                user?.photoURL ?
+                                    <img className='rounded-full mt-3 ml-4' style={{ height: '45px', width: '45px' }} src={user.photoURL} alt="" />
+                                    : <FaUser></FaUser>
+                            }
+                        </div>
                         <li><Link to='/home'>Home</Link></li>
                         <li><Link to='/course'>Course</Link></li>
                         <li><Link to='/faq'>FAQ</Link></li>
                         <li><Link to='/blog'>Blog</Link></li>
                         <li>{
                             user?.email ?
-                                <button onClick={handelLogout} className='btn btn-sm'>Log Out</button>
-                                : <div className='mr-4 font-bold'>
+                                <Link onClick={handelLogout} className=''>Log Out</Link>
+                                : <>
                                     <Link to='/login'>Login</Link>
-                                </div>
+                                    <Link to='/register'>Register</Link>
+                                </>
                         }</li>
-                        <li><Link to='/register'>Register</Link></li>
+
+
                         <label className="label cursor-pointer">
                             <input type="checkbox" className="toggle toggle-primary" checked />
                         </label>
@@ -57,23 +63,38 @@ const Header = () => {
             </div>
             <div className="navbar-end hidden lg:flex">
                 <ul className="menu menu-horizontal p-0 font-bold">
+                    <li>{user?.displayName && <p>{user.displayName}</p>}</li>
                     <li>{
                         user?.uid ?
                             <Link onClick={handelLogout} className=''>Log Out</Link>
-                            : <div className='mr-4 font-bold'>
+                            :
+                            <>
                                 <Link to='/login'>Login</Link>
-                            </div>
+                                <Link to='/register'>Register</Link>
+                            </>
                     }</li>
-                    <li><Link to='/register'>Register</Link></li>
+
                 </ul>
-                <label className="label cursor-pointer">
-                    <input type="checkbox" className="toggle toggle-primary" checked />
+                <label for="Toggle2" className="inline-flex items-center space-x-4 cursor-pointer dark:text-gray-800 font-bold">
+                    <span>Light</span>
+                    <span className="relative">
+                        <input id="Toggle2" type="checkbox" className="hidden peer" />
+                        <div className="w-10 h-4 rounded-full shadow dark:bg-gray-600 peer-checked:dark:bg-violet-400"></div>
+                        <div className="absolute left-0 w-6 h-6 rounded-full shadow -inset-y-1 peer-checked:right-0 peer-checked:left-auto dark:bg-violet-400"></div>
+                    </span>
+                    <span>Dark</span>
                 </label>
-                <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-                    <div className="w-10 rounded-full">
-                        <img src="https://placeimg.com/80/80/people" />
-                    </div>
-                </label>
+                <div>
+                    <Link>
+                        <div className='avatar'>
+                            {
+                                user?.photoURL ?
+                                    <img className='rounded-full mt-3 ml-4' style={{ height: '45px', width: '45px' }} src={user.photoURL} alt="" />
+                                    : <FaUser></FaUser>
+                            }
+                        </div>
+                    </Link>
+                </div>
             </div>
         </div>
     );
