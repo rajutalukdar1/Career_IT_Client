@@ -11,7 +11,7 @@ const Course = () => {
             <div className='course-categories-container'>
                 {
                     courses.map(course => <p
-                        className='text-4xl font-bold mt-6'
+                        className='text-4xl font-bold mt-6 single-container'
                         key={course?.id}
                     >
                         <Link to={`/courseDetails/${course?.id}`}>{course?.name}</Link>

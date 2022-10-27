@@ -32,12 +32,12 @@ export const routes = createBrowserRouter([
             },
             {
                 path: '/courseDetails/:id',
-                element: <PrivateRoute><CardDetails></CardDetails></PrivateRoute>,
+                element: <CardDetails></CardDetails>,
                 loader: ({ params }) => fetch(`https://assignment-no-10-server.vercel.app/courseDetails/${params.id}`)
             },
             {
                 path: '/enroll',
-                element: <EnrollPage></EnrollPage>
+                element: <PrivateRoute><EnrollPage></EnrollPage></PrivateRoute>
             },
             {
                 path: '/faq',

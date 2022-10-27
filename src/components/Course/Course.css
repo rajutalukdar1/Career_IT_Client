@@ -6,3 +6,13 @@
     background-color: whitesmoke;
     box-shadow: 5px 5px 5px gray;
 }
+
+.single-container {
+    border: 3px solid whitesmoke;
+    box-shadow: 3px 5px gray;
+
+}
+
+.single-container:hover {
+    background-color: lightcyan;
+}
