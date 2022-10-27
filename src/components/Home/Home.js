@@ -11,7 +11,7 @@ const Home = () => {
                 <h2>Let's Started </h2>
                 <h2>Learning Skills & Upgrade Your Life</h2>
                 <div>
-                    <Link className="btn btn-active btn-secondary">GET STARTED</Link>
+                    <Link to='/faq' className="btn btn-active btn-secondary">GET STARTED</Link>
                     <Link to='/course' className="btn btn-outline btn-primary">OUR COURSES</Link>
                 </div>
             </div>
