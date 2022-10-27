@@ -7,7 +7,7 @@ import './Header.css'
 
 const Header = () => {
     const { user, logOut } = useContext(AuthContext);
-    console.log('context', user);
+    // console.log('context', user);
     // console.log(user.displayName);
 
     const handelLogout = () => {

@@ -2,3 +2,9 @@
     width: 250px;
     height: 200px;
 }
+
+.img-container {
+    width: 365px;
+    box-shadow: 2px 3px 2px 3px gray;
+
+}
