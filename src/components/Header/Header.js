@@ -75,7 +75,7 @@ const Header = () => {
                     }</li>
 
                 </ul>
-                <label for="Toggle2" className="inline-flex items-center space-x-4 cursor-pointer dark:text-gray-800 font-bold">
+                <label htmlFor="Toggle2" className="inline-flex items-center space-x-4 cursor-pointer dark:text-gray-800 font-bold">
                     <span>Light</span>
                     <span className="relative">
                         <input id="Toggle2" type="checkbox" className="hidden peer" />
